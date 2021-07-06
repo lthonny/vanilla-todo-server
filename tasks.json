@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "text": "I alert JavaScript",
+    "completed": "false"
+  },
+  {
+    "id": "2",
+    "text": "Angular",
+    "completed": "true"
+  },
+  {
+    "id": "3",
+    "text": "Node js",
+    "completed": "false"
+  }
+]
