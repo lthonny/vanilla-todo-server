@@ -6,10 +6,12 @@ const getAllTasks = (request, response) => {
 }
 
 const postAddTask = (request, response) => {
-    response.send('add');
+    response.json(request.body);
+    console.log('postAddTask body', request.body)
 }
 
 const putEditTask = (request, response) => {
+    //request.params.id
     response.send('edit');
 }
 

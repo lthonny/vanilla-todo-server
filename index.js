@@ -5,6 +5,7 @@ const todoRoutes = require('./routes/routes.js');
 
 
 app.use(cors());
+app.use(express.json());
 app.use(todoRoutes);
 
 
