@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllTasks, postAddTask, putEditTask, deleteTask } = require('../controller/controller.js');
+const { getAllTasks, addTask, editTask, deleteTask } = require('../controller/controller.js');
 
 
 // view tasks
-router.get('/', getAllTasks);
+router.get('/tasks', getAllTasks);
 
 // add task
-router.post('/tasks', postAddTask);
+router.post('/tasks', addTask);
 
 // edit task
-router.put('/tasks/:id', putEditTask);
+router.put('/tasks/:id', editTask);
 
 // delete task
 router.delete('/tasks/:id', deleteTask);
