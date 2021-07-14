@@ -16,5 +16,4 @@ router.put('/tasks/:id', editTask);
 // delete task
 router.delete('/tasks/:id', deleteTask);
 
-
 module.exports = router;
