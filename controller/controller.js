@@ -16,15 +16,17 @@ const getAllTasks = (request, response) => {
 }
 
 
-function writeFile(pathToJSON, myJsonString, res, tasks) {
+function writeFile(pathToJSON, res, tasks) {
+    const myJsonString = JSON.stringify(tasks);
+
     fs.writeFile(pathToJSON, myJsonString, (err) => {
         if (err) {
-            res.sendStatus(500);
-        } else {
-            res.sendStatus(204);
+            res.sendStatus(500).end();
+            return;
         }
+
+        res.json(tasks);
     })
-    res.json(tasks);
 }
 
 
@@ -56,9 +58,8 @@ const addTask = (request, response) => {
             }
 
             tasks.push(obj);
-            const myJsonString = JSON.stringify(tasks);
 
-            writeFile(pathToJSON, myJsonString, response, tasks);
+            writeFile(pathToJSON, response, tasks);
         });
     } catch (e) {
         response.sendStatus(500);
@@ -73,20 +74,19 @@ const editTask = (request, response) => {
             if (err) throw err;
             const tasks = JSON.parse(data);
 
-            const id = tasks.findIndex(function (task) {
+            const index = tasks.findIndex(function (task) {
                 return task.id === taskId;
             })
-
-            if (tasks[id].text !== request.body.text) {
-                tasks[id].text = request.body.text;
+            console.log('\n\n task', tasks[index]);
+            if (text !== undefined && text !== null) {
+                tasks[index].text = text;
             }
 
-            if (tasks[id].status !== request.body.status) {
-                tasks[id].status = !tasks[id].status
+            if (status !== undefined && status !== null) {
+                tasks[index].status = status;
             }
 
-            const myJsonString = JSON.stringify(tasks);
-            writeFile(pathToJSON, myJsonString, response, tasks);
+            writeFile(pathToJSON, response, tasks);
         })
     } catch (e) {
         response.sendStatus(500);
@@ -100,14 +100,12 @@ const deleteTask = (request, response) => {
             if (err) throw err;
             const tasks = JSON.parse(data);
 
-
             const id = tasks.findIndex(function (task) {
                 return task.id === taskId;
             })
             tasks.splice(id, 1);
 
-            const myJsonString = JSON.stringify(tasks);
-            writeFile(pathToJSON, myJsonString, response, tasks);
+            writeFile(pathToJSON, response, tasks);
         })
     } catch (e) {
         response.sendStatus(500);
