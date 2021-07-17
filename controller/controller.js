@@ -7,6 +7,7 @@ const getAllTasks = (request, response) => {
     try {
         fs.readFile(pathToJSON, 'utf-8', (err, data) => {
             if (err) throw err;
+            console.log('data', data);
             const tasks = JSON.parse(data);
             response.json(tasks);
         });
@@ -27,6 +28,18 @@ function writeFile(pathToJSON, res, tasks) {
 
         res.json(tasks);
     })
+}
+
+function writeFilePromise(pathToJSON, res, tasks) {
+    const myJsonString = JSON.stringify(tasks);
+    return new Promise(function(resolve, reject){
+        fs.writeFile(pathToJSON, myJsonString, (err) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(true);
+        });
+    });
 }
 
 
@@ -78,12 +91,13 @@ const editTask = (request, response) => {
                 return task.id === taskId;
             })
             console.log('\n\n task', tasks[index]);
+
             if (text !== undefined && text !== null) {
                 tasks[index].text = text;
             }
 
             if (status !== undefined && status !== null) {
-                tasks[index].status = status;
+                tasks[index].status = !status;
             }
 
             writeFile(pathToJSON, response, tasks);
