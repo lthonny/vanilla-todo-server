@@ -7,7 +7,6 @@ const getAllTasks = (request, response) => {
     try {
         fs.readFile(pathToJSON, 'utf-8', (err, data) => {
             if (err) throw err;
-            console.log('data', data);
             const tasks = JSON.parse(data);
             response.json(tasks);
         });
@@ -90,7 +89,7 @@ const editTask = (request, response) => {
             const index = tasks.findIndex(function (task) {
                 return task.id === taskId;
             })
-            console.log('\n\n task', tasks[index]);
+            // console.log('\n\n task', tasks[index]);
 
             if (text !== undefined && text !== null) {
                 tasks[index].text = text;
@@ -127,4 +126,4 @@ const deleteTask = (request, response) => {
 }
 
 
-module.exports = {getAllTasks, addTask, editTask, deleteTask};
+module.exports = { getAllTasks, addTask, editTask, deleteTask };
