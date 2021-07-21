@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllTasks, addTask, editTask, deleteTask } = require('../controller/controller.js');
+const { getAllTasks, addTask, editTask, deleteTask } = require('../controllers/controller');
 
 
 // view tasks

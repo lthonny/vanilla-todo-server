@@ -79,7 +79,10 @@ const addTask = (request, response) => {
 }
 
 const editTask = (request, response) => {
-    const {text, status} = request.body;
+    const {text, status, order } = request.body;
+
+    console.log(text)
+
     const taskId = request.params.id;
     try {
         fs.readFile(pathToJSON, 'utf-8', (err, data) => {
@@ -97,6 +100,10 @@ const editTask = (request, response) => {
 
             if (status !== undefined && status !== null) {
                 tasks[index].status = !status;
+            }
+
+            if (order !== undefined && order !== null) {
+                tasks[index].order = order;
             }
 
             writeFile(pathToJSON, response, tasks);

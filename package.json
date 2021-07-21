@@ -11,12 +11,18 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^4.0.1",
+    "mysql": "^2.18.1",
+    "pg-promise": "^10.10.2",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
   },
   "nodemonConfig": {
-    "ignore": ["tasks.json"]
+    "ignore": [
+      "tasks.json"
+    ]
   }
 }
