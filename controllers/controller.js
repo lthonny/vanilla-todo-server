@@ -132,5 +132,16 @@ const deleteTask = (request, response) => {
     }
 }
 
+const apiAction = async (req, res) => {
+try {
+    // data validation
+    // const result = await Model.getTasks();
+    // res.json(result) || res.sendStatus();
+} catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+}
+}
+
 
 module.exports = { getAllTasks, addTask, editTask, deleteTask };
