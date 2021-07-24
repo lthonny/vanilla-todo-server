@@ -1,6 +1,6 @@
 const ModelJson = require('./model-json');
 const ModelMongo = require('./model-mongo');
-const ModelPostgresql = require('./model-postgresql');
+// const ModelPostgresql = require('./model-postgresql');
 
 
 class TaskListFactory {
@@ -12,15 +12,15 @@ class TaskListFactory {
     else if (type === 'mongodb') {
       tasklist = new ModelMongo()
     }
-    else if (type === 'postgresqldb') {
-      tasklist = new ModelPostgresql()
-    }
+    // else if (type === 'postgresqldb') {
+    //   tasklist = new ModelPostgresql()
+    // }
     return tasklist;
   };
 }
 
 const tasklistFactory = new TaskListFactory();
-const tasklist = tasklistFactory.create('json');
+const tasklist = tasklistFactory.create('mongodb');
 
 module.exports = tasklist;
 

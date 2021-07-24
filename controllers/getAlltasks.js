@@ -4,6 +4,8 @@ const getAllTasks = (req, res) => {
 
   try {
     const tasks = tasklist.getAllTasks();
+    // console.log(tasks);
+
     return tasks.then(tasks => {
       return res.json(tasks);
     })

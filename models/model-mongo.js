@@ -1,38 +1,69 @@
-// const MongoClient = require('mongodb').MongoClient;
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:2717', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, () => console.log('connected to db'))
+const db = mongoose.connection;
 
-// await mongoose.connect('mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// });
+const Task = require('../models/Task.model');
 
-// MongoClient.connect('mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb', function (err, db) {
-//   if (err) {
-//     throw err;
-//   }
-//   db.collection('mammals').find().toArray(function (err, result) {
-//     if (err) {
-//       throw err;
-//     }
-//     console.log(result);
-//   });
-// });
 
 
 class ModelMongo {
   async getAllTasks() {
-
+    return new Promise((resolve, reject) => {
+      const tasks = Task.find();
+      resolve(tasks);
+    })
   }
 
   async addTask(text) {
+    return new Promise((resolve, reject) => {
+      // if (err) reject(err);
+
+      const tasks = Task.find();
+      let order = 1;
+      if (tasks.length) {
+        order = tasks.reduce(function (acc, curr) {
+          return acc > curr.order ? acc : curr.order;
+        }, 1) + 1;
+      }
+
+      const date = new Date();
+      date.toLocaleString();
+
+      const task = new Task({
+        text: text,
+        status: false,
+        date: date,
+        order: order
+      })
+
+      task.save();
+      resolve(tasks);
+    })
   }
 
   async editTask(text, status, order, taskId) {
+    return new Promise((resolve, reject) => {
+      const tasks = Task.find();
+
+      // const task = new
+
+      // tasks.deleteOne({ _id: taskId });
+      // task.save();
+      resolve();
+    })
   }
 
-  async editTask(taskId) {
+  async deleteTask(taskId) {
+    return new Promise((resolve, reject) => {
+      // if (err) reject(err);
+
+      const tasks = Task.find();
+      tasks.deleteOne({ _id: taskId });
+      resolve(tasks);
+    })
   }
 }
 
