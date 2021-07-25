@@ -16,6 +16,8 @@ const taskSchema = new Schema({
   order: {
     type: Number
   }
-});
+},
+  { versionKey: false }
+);
 
 module.exports = mongoose.model("task", taskSchema);
