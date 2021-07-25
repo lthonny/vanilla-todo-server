@@ -6,10 +6,10 @@ const editTask = (req, res) => {
 
   try {
     const tasks = tasklist.editTask(text, status, order, taskId);
-
-    return tasks.then(tasks => {
-      return res.json(tasks);
-    })
+    res.json(tasks)
+    // return tasks.then(tasks => {
+    //   return res.json(tasks);
+    // })
   } catch (e) {
     res.sendStatus(500);
   }

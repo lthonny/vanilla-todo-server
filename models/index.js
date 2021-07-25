@@ -12,9 +12,9 @@ class TaskListFactory {
     else if (type === 'mongodb') {
       tasklist = new ModelMongo()
     }
-    // else if (type === 'postgresqldb') {
-    //   tasklist = new ModelPostgresql()
-    // }
+    else if (type === 'postgresqldb') {
+      tasklist = new ModelPostgresql()
+    }
     return tasklist;
   };
 }
