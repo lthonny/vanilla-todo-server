@@ -4,87 +4,73 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}, () => console.log('connected to db'))
+}, () => console.log('connected to db'));
+mongoose.set('useFindAndModify', false);
 const db = mongoose.connection;
 
 const Task = require('../models/Task.model');
 
-
-
 class ModelMongo {
   async getAllTasks() {
-    return new Promise((resolve, reject) => {
-      const tasks = Task.find();
-      resolve(tasks);
-    })
+    const tasks = await Task.find();
+    return tasks;
   }
 
   async addTask(text) {
-    return new Promise((resolve, reject) => {
-      // if (err) reject(err);
+    const tasks = Task.find();
 
-      const tasks = Task.find();
-      let order = 1;
-      if (tasks.length) {
-        order = tasks.reduce(function (acc, curr) {
-          return acc > curr.order ? acc : curr.order;
-        }, 1) + 1;
-      }
+    let order = 1;
+    if (tasks.length) {
+      order = tasks.reduce(function (acc, curr) {
+        return acc > curr.order ? acc : curr.order;
+      }, 1) + 1;
+    }
 
-      const date = new Date();
-      date.toLocaleString();
+    const date = new Date();
+    date.toLocaleString();
 
-      const task = new Task({
-        text: text,
-        status: false,
-        date: date,
-        order: order
-      })
-
-      task.save();
-      resolve(tasks);
+    const task = new Task({
+      text: text,
+      status: false,
+      date: date,
+      order: order
     })
+
+    task.save();
+    return tasks;
   }
 
   async editTask(text, status, order, taskId) {
-    return new Promise((resolve, reject) => {
-      const tasks = Task.find();
-      // const task = Task.findOne({ _id: taskId });
+    const updateObj = {};
 
-      if (text !== undefined && text !== null) {
-        tasks.updateOne({ _id: taskId }, {
-          $set: { text: text }
-        })
-      }
+    if (text !== undefined && text !== null) {
+      updateObj.text = text;
+    }
 
-      if (status !== undefined && status !== null) {
-        tasks.updateOne({ _id: taskId }, {
-          $set: { status: !status }
-        })
-      }
+    if (status !== undefined && status !== null) {
+      updateObj.status = status;
+    }
 
-      if (order !== undefined && order !== null) {
-        tasks.updateOne({ _id: taskId }, {
-          $set: { order: order }
-        })
-      }
+    if (order !== undefined && order !== null) {
+      updateObj.order = order;
+    }
 
-      resolve(tasks);
-    })
+    console.log('updateObj', updateObj);
+
+    await Task.findByIdAndUpdate(taskId, updateObj);
+    //const task = await Task.findById(taskId);
+    //console.log(task);
+    // if (task.status !== undefined && task.status !== null) {
+    //   task.status = !task.status;
+    // }$set: { text: text }
+
+    // await updateText.save();
+    return [];
   }
 
   async deleteTask(taskId) {
-    return new Promise((resolve, reject) => {
-      const tasks = Task.find();
-
-      tasks.deleteOne({ _id: taskId })
-
-      // const subscriber = Task.findByIdAndDelete({ _id: taskId });
-      // tasks.deleteOne({ _id: taskId });
-
-      // tasks.save()
-      resolve(tasks);
-    })
+    const task = await Task.findByIdAndDelete(taskId);
+    return task;
   }
 }
 

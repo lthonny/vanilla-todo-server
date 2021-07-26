@@ -20,4 +20,11 @@ const taskSchema = new Schema({
   { versionKey: false }
 );
 
+taskSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) { delete ret._id }
+});
+
+
 module.exports = mongoose.model("task", taskSchema);
