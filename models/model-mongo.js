@@ -17,7 +17,7 @@ class ModelMongo {
   }
 
   async addTask(text) {
-    const tasks = Task.find();
+    const tasks = await Task.find();
 
     let order = 1;
     if (tasks.length) {
@@ -37,7 +37,7 @@ class ModelMongo {
     })
 
     task.save();
-    return tasks;
+    return [];
   }
 
   async editTask(text, status, order, taskId) {
@@ -48,29 +48,20 @@ class ModelMongo {
     }
 
     if (status !== undefined && status !== null) {
-      updateObj.status = status;
+      updateObj.status = !status;
     }
 
     if (order !== undefined && order !== null) {
       updateObj.order = order;
     }
 
-    console.log('updateObj', updateObj);
-
     await Task.findByIdAndUpdate(taskId, updateObj);
-    //const task = await Task.findById(taskId);
-    //console.log(task);
-    // if (task.status !== undefined && task.status !== null) {
-    //   task.status = !task.status;
-    // }$set: { text: text }
-
-    // await updateText.save();
     return [];
   }
 
   async deleteTask(taskId) {
     const task = await Task.findByIdAndDelete(taskId);
-    return task;
+    return [];
   }
 }
 

@@ -1,10 +1,9 @@
 const Pool = require('pg').Pool;
-const pool = new Pool ({
+const pool = new Pool({
   user: "postgres",
   password: "viryssmir21",
   host: "localhost",
   port: 5432,
-  
 })
 
 class ModelPostgresql {

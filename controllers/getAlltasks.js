@@ -1,12 +1,9 @@
 const tasklist = require('./../models/index');
 
-const getAllTasks = (req, res) => {
-
+const getAllTasks = async (req, res) => {
   try {
-    const tasks = tasklist.getAllTasks();
-    return tasks.then(tasks => {
-      return res.json(tasks);
-    })
+    const tasks = await tasklist.getAllTasks();
+    await res.json(tasks);
   } catch (e) {
     res.sendStatus(500);
   }

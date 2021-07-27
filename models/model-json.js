@@ -31,8 +31,10 @@ class ModelJson {
         date.toLocaleString();
 
         const obj = {
-          id: id, text: text,
-          status: false, date: date,
+          id: id,
+          text: text,
+          status: false,
+          date: date,
           order: order
         }
 
@@ -41,7 +43,7 @@ class ModelJson {
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {
           if (err) reject(err);
-          resolve(tasks);
+          resolve([]);
         });
       });
     })
@@ -72,7 +74,7 @@ class ModelJson {
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {
           if (err) reject(err);
-          resolve(tasks);
+          resolve([]);
         });
       })
     });
@@ -92,7 +94,7 @@ class ModelJson {
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {
           if (err) reject(err);
-          resolve(tasks);
+          resolve([]);
         });
       })
     })
