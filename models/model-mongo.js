@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}, () => console.log('connected to db'));
+}, () => console.log('Database connected Mongodb...'));
 mongoose.set('useFindAndModify', false);
 const db = mongoose.connection;
 
-const Task = require('../models/Task.model');
+const Task = require('./modelMongodb');
 
 class ModelMongo {
   async getAllTasks() {

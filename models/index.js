@@ -1,6 +1,6 @@
 const ModelJson = require('./model-json');
 const ModelMongo = require('./model-mongo');
-// const ModelPostgresql = require('./model-postgresql');
+const ModelPostgresql = require('./model-postgresql');
 
 
 class TaskListFactory {
@@ -20,7 +20,7 @@ class TaskListFactory {
 }
 
 const tasklistFactory = new TaskListFactory();
-const tasklist = tasklistFactory.create('mongodb');
+const tasklist = tasklistFactory.create('postgresqldb');
 
 module.exports = tasklist;
 
