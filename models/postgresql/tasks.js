@@ -15,14 +15,12 @@ module.exports = db.define("tasks", {
     type: Sequelize.BOOLEAN,
     allowNull: false
   },
-  // date: {
-  //   type: Sequelize.DATE,a
-  //   allowNull: false
-  // },
   order: {
     type: Sequelize.NUMBER,
     allowNull: false
   },
   createdAt: { type: Sequelize.DATE },
-  updatedAt: { type: Sequelize.DATE },
+  updatedAt: { type: Sequelize.DATE, onUpdate: true, notNull: false },
+}, {
+  // timestamps: false // 
 });
