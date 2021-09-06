@@ -1,6 +1,12 @@
 # vanilla-todo-server
 Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanilla-todo-client)
 
+Installing docker
+-------
+ubuntu: https://docs.docker.com/engine/install/ubuntu/
+windows: https://docs.docker.com/desktop/windows/install/
+mac: https://docs.docker.com/desktop/mac/install/
+
 Running postgresql in docker container
 -------
 - `docker container ls` ( -a - include stopped containers )
