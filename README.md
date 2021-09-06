@@ -1,6 +1,9 @@
 # vanilla-todo-server
 Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanilla-todo-client)
 
+To download all project dependencies, write:
+`npm install || npm i`
+
 1.Installing docker
 -------
 ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
