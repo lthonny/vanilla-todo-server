@@ -24,7 +24,4 @@ pgdata folder contains postgres files
 - `docker container stop pg` stops postgres
 - `docker container start pg` starts pg (note that the data still exists)
   
-3.Creating a database in pgadmin4. The database is named the same as we specified in the config file
--------
-![image](https://user-images.githubusercontent.com/58366884/132207796-c3193cd4-9da3-4473-beb7-cd581ed880b4.png)
 
