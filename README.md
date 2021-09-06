@@ -28,6 +28,6 @@ pgdata folder contains postgres files
 -------
 - `sudo docker run -d -p 2717:27017 -v` _(copy the path to the created data folder, which lies in the project)_ `:/data/db mongo`
 mgdata folder contains mongodb files
-- docker container stop <name_container>
-- docker container start <name_container>
+- `docker container stop <name_container>`
+- `docker container start <name_container>`
 
