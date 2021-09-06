@@ -21,11 +21,13 @@ pgdata folder contains postgres files
 - `update config to contain 5431 port`
 - `npm run db:create` create a database inside container 
 - `nmp run db:migrate` create tables inside container
-- `docker container stop pg` stops postgres
-- `docker container start pg` starts pg (note that the data still exists)
+- `docker container stop pg-todo` stops postgres
+- `docker container start pg-todo` starts pg (note that the data still exists)
   
 3.Running postgresql in docker container
 -------
 - `sudo docker run -d -p 2717:27017 -v` _(copy the path to the created data folder, which lies in the project)_ `:/data/db mongo`
 mgdata folder contains mongodb files
+- docker container stop <name_container>
+- docker container start <name_container>
 
