@@ -24,4 +24,9 @@ pgdata folder contains postgres files
 - `docker container stop pg` stops postgres
 - `docker container start pg` starts pg (note that the data still exists)
   
-
+3.Running postgresql in docker container
+-------
+- docker container ls` ( -a - include stopped containers )
+- docker loading container `sudo docker pull mongo:latest`
+- docker container run `sudo docker run -d -p 2717:27017 -v` _(copy the path to the created pgdata folder, which lies in the project)_ `:/mgdata/db --name mymongo mongo:latest`  
+ 
