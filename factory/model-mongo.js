@@ -1,7 +1,7 @@
 require('dotenv/config');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017', {
+mongoose.connect('mongodb://localhost:2717', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, () => console.log('Database connected Mongodb...'));
@@ -11,7 +11,7 @@ const db = mongoose.connection;
 const Task = require('./modelMongodb');
 
 class ModelMongo {
-  async getAllTasks() {
+  async getTasks() {
     const tasks = await Task.find();
     return tasks;
   }

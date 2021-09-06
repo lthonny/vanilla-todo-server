@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "init": "npx sequelize init"
   },
   "author": "Vasilich",
   "license": "ISC",
@@ -22,7 +23,8 @@
     "pg-hstore": "^2.3.4",
     "pg-promise": "^10.10.2",
     "redis": "^3.1.2",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   },
   "nodemonConfig": {
     "ignore": [

@@ -1,26 +1,37 @@
-const ModelJson = require('./model-json');
-const ModelMongo = require('./model-mongo');
-const ModelPostgresql = require('./model-postgresql');
+'use strict';
 
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.js')[env];
+const db = {};
 
-class TaskListFactory {
-  create(type) {
-    let tasklist;
-    if (type === 'json') {
-      tasklist = new ModelJson()
-    }
-    else if (type === 'mongodb') {
-      tasklist = new ModelMongo()
-    }
-    else if (type === 'postgresqldb') {
-      tasklist = new ModelPostgresql()
-    }
-    return tasklist;
-  };
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-const tasklistFactory = new TaskListFactory();
-const tasklist = tasklistFactory.create('postgresqldb');
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
-module.exports = tasklist;
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

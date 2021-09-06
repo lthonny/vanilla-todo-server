@@ -1,9 +1,8 @@
-const { Sequelize, db } = require('./postgresql');
-const Task = require('./postgresql/tasks');
+const models = require("../models");
+const Task = models.Task;
 
 class ModelPostgresql {
-  async getAllTasks() {
-    console.log('SequelizeSequelize', Task);
+  async getTasks() {
     const tasks = Task.findAll();
     return tasks;
   }
