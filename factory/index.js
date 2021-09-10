@@ -19,7 +19,7 @@ class TaskListFactory {
 }
 
 const tasklistFactory = new TaskListFactory();
-const tasklist = tasklistFactory.create('mongodb');
+const tasklist = tasklistFactory.create('json');
 
 module.exports = tasklist;
 
