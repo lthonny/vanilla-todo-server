@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(todoRoutes);
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 const PORT = process.env.SERVER_PORT ?? 3000;
 

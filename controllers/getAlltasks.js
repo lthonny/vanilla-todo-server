@@ -3,6 +3,7 @@ const tasklist = require('./../factory/index');
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await tasklist.getTasks();
+
     res.json(tasks);
   } catch (e) {
     res.sendStatus(500);

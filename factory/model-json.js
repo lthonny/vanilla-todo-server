@@ -1,14 +1,24 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 const pathToJSON = path.join(__dirname + './../tasks.json');
+
+const { generateId } = require('../utils');
 
 class ModelJson {
   async getTasks() {
     return new Promise((resolve, reject) => {
       fs.readFile(pathToJSON, 'utf-8', (err, data) => {
-        if (err) reject(err);
-        const tasks = JSON.parse(data);
-        resolve(tasks);
+        if (err) {
+          reject(err);
+        }
+        
+        try {
+          const tasks = JSON.parse(data);
+
+          resolve(tasks);
+        } catch(e) {
+          console.log(e);
+        }
       });
     })
   }
@@ -16,13 +26,17 @@ class ModelJson {
   async addTask(text) {
     return new Promise((resolve, reject) => {
       fs.readFile(pathToJSON, 'utf-8', (err, data) => {
-        if (err) reject(err);
+        if (err) {
+          reject(err);
+        }
+
         const tasks = JSON.parse(data);
 
-        const id = Math.random().toString(36).substr(2, 9);
+        const id = generateId();
+
         let order = 1;
         if (tasks.length) {
-          order = tasks.reduce(function (acc, curr) {
+          order = tasks.reduce((acc, curr) => {
             return acc > curr.order ? acc : curr.order;
           }, 1) + 1;
         }
@@ -30,71 +44,66 @@ class ModelJson {
         const date = new Date();
         date.toLocaleString();
 
-        const obj = {
-          id: id,
-          text: text,
-          status: false,
-          date: date,
-          order: order
-        }
+        const obj = { id, text, status: false, date, order };
 
         tasks.push(obj);
 
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {
           if (err) reject(err);
-          resolve([]);
+          resolve();
         });
       });
     })
   }
 
-  async editTask(text, status, order, taskId) {
+  async editTask(id, dataset) {
+
     return new Promise((resolve, reject) => {
       fs.readFile(pathToJSON, 'utf-8', (err, data) => {
-        if (err) reject(err);
-        const tasks = JSON.parse(data);
-
-        const index = tasks.findIndex(function (task) {
-          return task.id === taskId;
-        })
-
-        if (text !== undefined && text !== null) {
-          tasks[index].text = text;
+        if (err) {
+          reject(err);
         }
 
-        if (status !== undefined && status !== null) {
-          tasks[index].status = !status;
-        }
+        try {
+          const tasks = JSON.parse(data);
 
-        if (order !== undefined && order !== null) {
-          tasks[index].order = order;
-        }
+          const index = tasks.findIndex(task => task.id === id);
+        
+          if(index > -1) {
+            Object.entries(dataset).forEach(([key, value]) => {
+              if (value !== undefined && value !== null) {
+                  tasks[index][key] = value;
+              }
+            })
+          }
 
-        const myJsonString = JSON.stringify(tasks);
-        fs.writeFile(pathToJSON, myJsonString, (err) => {
-          if (err) reject(err);
-          resolve([]);
-        });
+          const myJsonString = JSON.stringify(tasks);
+          fs.writeFile(pathToJSON, myJsonString, (err) => {
+            if (err) reject(err);
+            resolve();
+          }); 
+
+        } catch(e) {
+          console.log(e);
+        }
       })
     });
   }
 
-  async deleteTask(taskId) {
+  async deleteTask(id) {
     return new Promise((resolve, reject) => {
       fs.readFile(pathToJSON, 'utf-8', (err, data) => {
         if (err) reject(err);
         const tasks = JSON.parse(data);
 
-        const id = tasks.findIndex(function (task) {
-          return task.id === taskId;
-        })
+        const id = tasks.findIndex(task => task.id === id);
         tasks.splice(id, 1);
 
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {
           if (err) reject(err);
-          resolve([]);
+          resolve();
         });
       })
     })

@@ -1,11 +1,12 @@
 const tasklist = require('./../factory/index');
 
 const addTask = async (req, res) => {
-  const { text } = await req.body;
-
   try {
-    const tasks = await tasklist.addTask(text);
-    await res.json(tasks);
+    const { text } = req.body;
+
+    await tasklist.addTask(text);
+    
+    res.status(204).end();
   } catch (e) {
     res.sendStatus(500);
   }

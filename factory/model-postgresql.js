@@ -1,50 +1,43 @@
+const { sequelize } = require("../models");
 const models = require("../models");
 const Task = models.Task;
 
+const { QueryTypes } = require('sequelize');
+
 class ModelPostgresql {
   async getTasks() {
-    const tasks = Task.findAll();
-    return tasks;
+
+    // const [results, metadata] = await sequelize.query('SELECT...'); // Raw query - use array destructuring
+
+    const results = await sequelize.query("SELECT * FROM `Tasks`", { type: QueryTypes.SELECT });
+    console.log(results)
+
+    return Task.findAll();
   }
 
   async addTask(text) {
     const tasks = await Task.findAll();
 
+    // const sql = await sequelize.query("SELECT * FROM `Tasks`", { type: QueryTypes.SELECT });
+    // console.log(sql);
+
     let order = 1;
     if (tasks.length) {
-      order = tasks.reduce(function (acc, curr) {
+      order = tasks.reduce((acc, curr) => {
         return acc > curr.order ? acc : curr.order;
       }, 1) + 1;
     }
 
-    const task = await Task.create({
-      text: text,
-      status: false,
-      order: order
-    })
-
-    return task;
+    await Task.create({ text, status: false, order });
   }
 
-  async editTask(text, status, order, taskId) {
-    if (text !== undefined && text !== null) {
-      Task.update({ text: text }, { where: { id: taskId } });
-    }
-
-    if (status !== undefined && status !== null) {
-      Task.update({ status: !status }, { where: { id: taskId } });
-    }
-
-    if (order !== undefined && order !== null) {
-      Task.update({ order: order }, { where: { id: taskId } });
-    }
-
-    return [];
+  async editTask(id, dataset) {
+    await Task.update({ ...dataset}, { where: { id } });
   }
 
-  async deleteTask(taskId) {
+  async deleteTask(id) {
     await Task.destroy({
-      where: { id: taskId },
+      where: { id },
     });
   }
 }

@@ -1,27 +1,27 @@
-require('dotenv/config');
-
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost:2717', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, () => console.log('Database connected Mongodb...'));
 mongoose.set('useFindAndModify', false);
-const db = mongoose.connection;
+
 
 const Task = require('./modelMongodb');
 
 class ModelMongo {
+
   async getTasks() {
-    const tasks = await Task.find();
-    return tasks;
+    return Task.find();
   }
+
 
   async addTask(text) {
     const tasks = await Task.find();
 
     let order = 1;
     if (tasks.length) {
-      order = tasks.reduce(function (acc, curr) {
+      order = tasks.reduce((acc, curr) => {
         return acc > curr.order ? acc : curr.order;
       }, 1) + 1;
     }
@@ -29,39 +29,30 @@ class ModelMongo {
     const date = new Date();
     date.toLocaleString();
 
-    const task = new Task({
-      text: text,
-      status: false,
-      date: date,
-      order: order
-    })
+    const task = new Task({ text, status: false, date, order });
 
     task.save();
-    return [];
+    return;
   }
 
-  async editTask(text, status, order, taskId) {
+
+  async editTask(id, dataset) {
     const updateObj = {};
 
-    if (text !== undefined && text !== null) {
-      updateObj.text = text;
-    }
+    Object.entries(dataset).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+          updateObj[key] = value;
+      }
+    })
 
-    if (status !== undefined && status !== null) {
-      updateObj.status = !status;
-    }
-
-    if (order !== undefined && order !== null) {
-      updateObj.order = order;
-    }
-
-    await Task.findByIdAndUpdate(taskId, updateObj);
-    return [];
+    await Task.findByIdAndUpdate(id, updateObj);
+    return;
   }
 
-  async deleteTask(taskId) {
-    const task = await Task.findByIdAndDelete(taskId);
-    return [];
+
+  async deleteTask(id) {
+    await Task.findByIdAndDelete(id);
+    return;
   }
 }
 
