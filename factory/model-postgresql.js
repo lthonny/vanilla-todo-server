@@ -1,25 +1,29 @@
+const { QueryTypes } = require('sequelize');
 const { sequelize } = require("../models");
 const models = require("../models");
 const Task = models.Task;
 
-const { QueryTypes } = require('sequelize');
-
 class ModelPostgresql {
+
   async getTasks() {
-
-    // const [results, metadata] = await sequelize.query('SELECT...'); // Raw query - use array destructuring
-
-    const results = await sequelize.query("SELECT * FROM `Tasks`", { type: QueryTypes.SELECT });
-    console.log(results)
-
     return Task.findAll();
   }
 
   async addTask(text) {
-    const tasks = await Task.findAll();
 
-    // const sql = await sequelize.query("SELECT * FROM `Tasks`", { type: QueryTypes.SELECT });
-    // console.log(sql);
+    // let order = 1;
+    // let maxOrder = await Task.max('order');
+
+    // if(!isNaN(maxOrder)) {
+    //   console.log('maxOrder', maxOrder);
+    //   return order = maxOrder + order;
+    // }
+
+    // if(!isNaN(maxOrder)) {
+    //   return order = order + maxOrder + 1;
+    // }
+
+    const tasks = await Task.findAll();
 
     let order = 1;
     if (tasks.length) {
@@ -28,10 +32,11 @@ class ModelPostgresql {
       }, 1) + 1;
     }
 
-    await Task.create({ text, status: false, order });
+    await Task.create({ text, status: false, order});
   }
 
   async editTask(id, dataset) {
+
     await Task.update({ ...dataset}, { where: { id } });
   }
 
