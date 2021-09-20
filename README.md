@@ -7,6 +7,19 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 
 If you have something missing below there are links to settings
 
+#### Installing docker
+
+ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
+
+windows: `https://docs.docker.com/desktop/windows/install/`
+
+mac: `https://docs.docker.com/desktop/mac/install/`
+
+
+#### Installing Node
+
+link: `https://nodejs.org/en/download/`
+
 ## 1) To download all project dependencies, write:
   
   `npm ci`
@@ -38,16 +51,3 @@ If you have something missing below there are links to settings
 ## 3) Run npm start
 
   `npm run start`
-  
-## Installing docker
-
-ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
-
-windows: `https://docs.docker.com/desktop/windows/install/`
-
-mac: `https://docs.docker.com/desktop/mac/install/`
-
-
-## Installing Node
-
-link: `https://nodejs.org/en/download/`
