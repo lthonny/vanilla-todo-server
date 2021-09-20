@@ -1,10 +1,27 @@
 # vanilla-todo-server
 Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanilla-todo-client)
 
-To download all project dependencies, write:
-`npm install || npm i`
+Requirements: 
+  - docker
+  - node
 
-1.Installing docker
+1) To download all project dependencies, write:
+  `npm ci`
+
+2) Prepare db:
+  a) postgresql
+  
+  b) mongodb
+  - `docker run -d -p 2717:27017 -v `[path to]` :/data/db mongo`
+  path to - the path where you created the folder to store the container
+  - `docker ps` check the functionality of the container and find out its names
+  - `docker container stop [name_container]` stops mongodb
+  - `docker container start [name_container]` starts mongodb (note that the data still exists)
+ 
+3) Run npm start
+4) 
+
+Installing docker
 -------
 ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
 
@@ -19,8 +36,8 @@ mac: `https://docs.docker.com/desktop/mac/install/`
 pgdata folder contains postgres files
 - `psql -h localhost -p 5431 -U postgres` (password would be 'secret', note the port 5431, not 5432)
 - `update config to contain 5431 port`
-- `npm run db:create` create a database inside container 
-- `nmp run db:migrate` create tables inside container
+- `npx run db:create` create a database inside container 
+- `npx run db:migrate` create tables inside container
 - `docker container stop pg-todo` stops postgres
 - `docker container start pg-todo` starts pg (note that the data still exists)
   
