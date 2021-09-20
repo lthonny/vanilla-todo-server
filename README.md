@@ -27,9 +27,9 @@ link: `https://nodejs.org/en/download/`
 
 ### POSTGRESQL 
 
-   - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v **[PATH TO](bold)**:/pgdata postgres`
+   - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v [PATH TO]:/pgdata postgres`
  
-   [PATH TO] - the path where you created the folder to store the container
+   **[PATH TO](bold)** - the path where you created the folder to store the container
 
    - `npx run db:create` create a database inside container
 
