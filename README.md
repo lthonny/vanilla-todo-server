@@ -6,10 +6,11 @@ Requirements:
   - node
 If you have something missing below there are links to settings
 
-1) To download all project dependencies, write:
+### 1) To download all project dependencies, write:
+  
   `npm ci`
 
-2) Prepare db:
+### 2) Prepare db:
 
   a) postgresql
      
