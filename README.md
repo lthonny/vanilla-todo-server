@@ -35,7 +35,7 @@ link: `https://nodejs.org/en/download/`
 
    - `npx run db:migrate` create tables inside container
 
-### MONGODB
+*MONGODB*
     
    - `docker run -d -p 2717:27017 -v [PATH TO]:/data/db mongo`
     
