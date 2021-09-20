@@ -2,8 +2,8 @@
 Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanilla-todo-client)
 
 ## Requirements: 
-  - docker
-  - node
+  :white_check_mark: docker
+  :white_check_mark: node
 
 If you have something missing below there are links to settings
 
