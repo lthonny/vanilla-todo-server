@@ -21,9 +21,13 @@ If you have something missing below there are links to settings
   b) mongodb
     
     - `docker run -d -p 2717:27017 -v [PATH TO]:/data/db mongo`
+    
     PATH TO - the path where you created the folder to store the container
+    
     - `docker ps` check the functionality of the container and find out its names
+    
     - `docker container stop [name_container]` stops mongodb
+    
     - `docker container start [name_container]` starts mongodb (note that the data still exists)
  
 3) Run npm start
@@ -39,8 +43,4 @@ mac: `https://docs.docker.com/desktop/mac/install/`
 
 Installing Node
 -------
-ubuntu: ``
-
-windows: ``
-
-mac: ``
+lLink: `https://nodejs.org/en/download/`
