@@ -4,6 +4,7 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 Requirements: 
   - docker
   - node
+
 If you have something missing below there are links to settings
 
 ### 1) To download all project dependencies, write:
