@@ -29,7 +29,7 @@ link: `https://nodejs.org/en/download/`
 
    - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v [PATH TO]:/pgdata postgres`
  
-   **[PATH TO](bold)** - the path where you created the folder to store the container
+   **[PATH TO]** - the path where you created the folder to store the container
 
    - `npx run db:create` create a database inside container
 
@@ -39,7 +39,7 @@ link: `https://nodejs.org/en/download/`
     
    - `docker run -d -p 2717:27017 -v [PATH TO]:/data/db mongo`
     
-   [PATH TO] - the path where you created the folder to store the container
+  **[PATH TO]** - the path where you created the folder to store the container
     
    - `docker ps` check the functionality of the container and find out its names
     
