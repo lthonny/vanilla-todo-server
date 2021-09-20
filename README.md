@@ -8,15 +8,16 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 If you have something missing below there are links to settings
 
 ENV file:
-  DB_USERNAME=[postgres]
+
+  DB_USERNAME=postgres
   
-  DB_PASSWORD=[secret]
+  DB_PASSWORD=secret
   
-  DB_JSON=['json']
+  DB_JSON='json'
   
-  DB_MONGO=['mongodb']
+  DB_MONGO='mongodb'
   
-  DB_POSTGRES=['postgresqldb']
+  DB_POSTGRES='postgresqldb'
   
 
 ## 1) To download all project dependencies, write:
