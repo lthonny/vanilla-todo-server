@@ -17,7 +17,7 @@ If you have something missing below there are links to settings
 
 ### Installing Node
 
-link: `https://nodejs.org/en/download/`
++ link: `https://nodejs.org/en/download/`
 
 ## 1) To download all project dependencies, write:
   
