@@ -7,6 +7,9 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 
 If you have something missing below there are links to settings
 
+ENV file:
+
+
 ## 1) To download all project dependencies, write:
   
   `npm ci`
@@ -15,7 +18,7 @@ If you have something missing below there are links to settings
 
 ### POSTGRESQL 
 
-   - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v [PATH TO]:/pgdata postgres`
+   - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v ^2[PATH TO]:/pgdata postgres`
  
    PATH TO - the path where you created the folder to store the container
 
