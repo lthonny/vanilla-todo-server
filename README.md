@@ -9,11 +9,11 @@ If you have something missing below there are links to settings
 
 ### Installing docker
 
-ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
++ ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
 
-windows: `https://docs.docker.com/desktop/windows/install/`
++ windows: `https://docs.docker.com/desktop/windows/install/`
 
-mac: `https://docs.docker.com/desktop/mac/install/`
++ mac: `https://docs.docker.com/desktop/mac/install/`
 
 ### Installing Node
 
