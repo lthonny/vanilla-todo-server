@@ -25,7 +25,7 @@ link: `https://nodejs.org/en/download/`
 
 ## 2) Prepare db:
 
-### POSTGRESQL 
+*### POSTGRESQL *
 
    - `docker container run -d --name=pg-todo -p 5431:5432 -e POSTGRES_PASSWORD=secret -e PGDATA=/pgdata -v [PATH TO]:/pgdata postgres`
  
