@@ -34,6 +34,8 @@ If you have something missing below there are links to settings
  
 3) Run npm start
 
+npm run start
+
 Installing docker
 -------
 ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
