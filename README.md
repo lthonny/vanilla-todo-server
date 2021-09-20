@@ -32,9 +32,9 @@ If you have something missing below there are links to settings
     
     - `docker container start [name_container]` starts mongodb (note that the data still exists)
  
-3) Run npm start
+### 3) Run npm start
 
-npm run start
+  `npm run start`
 
 Installing docker
 -------
