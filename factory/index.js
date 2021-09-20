@@ -6,14 +6,14 @@ const ModelPostgresql = require('./model-postgresql');
 class TaskListFactory {
   create(type) {
     let tasklist;
-    if (type === process.env.DB_JSON) {
-      tasklist = new ModelJson();
-    }
-    else if (type === process.env.DB_MONGO) {
+    if (type === 'mongodb') {
       tasklist = new ModelMongo();
     }
-    else if (type === process.env.DB_POSTGRES) {
+    else if (type === 'postgresqldb') {
       tasklist = new ModelPostgresql();
+    }
+    else {
+      tasklist = new ModelJson();
     }
     
     return tasklist;
@@ -21,7 +21,7 @@ class TaskListFactory {
 }
 
 const tasklistFactory = new TaskListFactory();
-const tasklist = tasklistFactory.create(process.env.DB_POSTGRES);
+const tasklist = tasklistFactory.create(process.env.DB_TYPE);
 
 module.exports = tasklist;
 
