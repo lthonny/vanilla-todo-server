@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       order: {
-        type: Sequelize.BIGINT
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,

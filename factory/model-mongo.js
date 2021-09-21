@@ -1,12 +1,3 @@
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:2717', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}, () => console.log('Database connected Mongodb...'));
-mongoose.set('useFindAndModify', false);
-
-
 const Task = require('./modelMongodb');
 
 class ModelMongo {
@@ -26,12 +17,13 @@ class ModelMongo {
       }, 1) + 1;
     }
 
+
     const date = new Date();
     date.toLocaleString();
 
     const task = new Task({ text, status: false, date, order });
 
-    task.save();
+    await task.save();
     return;
   }
 

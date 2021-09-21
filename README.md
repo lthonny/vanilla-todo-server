@@ -7,17 +7,11 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 
 If you have something missing below there are links to settings
 
-ENV file:
+### ENV file:
 
-  - DB_USERNAME = postgres
-  
-  - DB_PASSWORD = secret
-  
-  - DB_JSON = 'json'
-  
-  - DB_MONGO = 'mongodb'
-  
-  - DB_POSTGRES = 'postgresqldb'
+Rename .env.example to .env
+
+In .env specify the database('postgresqldb', 'mongodb')
   
 
 ## 1) To download all project dependencies, write:
@@ -32,9 +26,9 @@ ENV file:
  
    PATH TO - the path where you created the folder to store the container
 
-   - `npx run db:create` create a database inside container
+   - `npx sequelize-cli db:create` create a database inside container
 
-   - `npx run db:migrate` create tables inside container
+   - `npx sequelize-cli db:migrate` create tables inside container
 
 ### MONGODB
     
