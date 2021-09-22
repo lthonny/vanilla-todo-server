@@ -13,7 +13,7 @@ Rename .env.example to .env
 
 In .env specify the database('postgresqldb', 'mongodb')
   
-=======
+
 ### Installing docker
 
 + ubuntu: `https://docs.docker.com/engine/install/ubuntu/`
