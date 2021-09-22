@@ -7,7 +7,6 @@ Back-end for the repository vanilla-todo-client(https://github.com/lthonny/vanil
 
 If you have something missing below there are links to settings
 
-<<<<<<< HEAD
 ### ENV file:
 
 Rename .env.example to .env
@@ -26,7 +25,6 @@ In .env specify the database('postgresqldb', 'mongodb')
 ### Installing Node
 
 + link: `https://nodejs.org/en/download/`
->>>>>>> 6a324aa1c78b15046315b45d04b0445abb9b7f65
 
 ## 1) To download all project dependencies, write:
   
