@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "npx prettier --write ."
   },
   "author": "Vasilich",
   "license": "ISC",
@@ -16,12 +19,9 @@
     "express": "^4.17.1",
     "mongodb": "^4.0.1",
     "mongoose": "^5.13.3",
-    "mysql": "^2.18.1",
     "nodemon": "^2.0.12",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
-    "pg-promise": "^10.10.2",
-    "redis": "^3.1.2",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0"
   },
@@ -29,5 +29,14 @@
     "ignore": [
       "tasks.json"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "prettier": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=16.8.0 <16.9.0",
+    "npm": ">=7.21.0 <7.22.0"
   }
 }

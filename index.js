@@ -8,11 +8,11 @@ const bodyParser = require('body-parser');
 app.use(cors());
 app.use(express.json());
 app.use(todoRoutes);
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 
 const PORT = process.env.SERVER_PORT ?? 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server is up ${PORT}`);
+  console.log(`Server is up ${PORT}`);
 });
