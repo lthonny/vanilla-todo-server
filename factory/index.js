@@ -40,7 +40,6 @@ class FactoryTaskList {
 }
 
 const taskListFactory = new FactoryTaskList();
-
 const tasklist = taskListFactory.create(process.env.DB_TYPE);
 
 module.exports = tasklist;

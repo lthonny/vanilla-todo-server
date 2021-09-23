@@ -1,4 +1,4 @@
-const Task = require('./modelMongodb');
+const Task = require('../models/modelMongodb');
 
 class ModelMongo {
 
