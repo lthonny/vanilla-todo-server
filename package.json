@@ -8,7 +8,8 @@
     "dev": "nodemon index.js",
     "lint": "eslint --debug src/",
     "lint:write": "eslint --debug src/ --fix",
-    "prettier": "npx prettier --write ."
+    "prettier": "npx prettier --write .",
+    "test": "playwright test"
   },
   "author": "Vasilich",
   "license": "ISC",
@@ -31,6 +32,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.15.0",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "prettier": "^2.4.1"
