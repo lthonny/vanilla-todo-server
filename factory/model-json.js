@@ -97,8 +97,8 @@ class ModelJson {
         if (err) reject(err);
         const tasks = JSON.parse(data);
 
-        const id = tasks.findIndex(task => task.id === id);
-        tasks.splice(id, 1);
+        const index = tasks.findIndex(task => task.id === id);
+        tasks.splice(index, 1);
 
         const myJsonString = JSON.stringify(tasks);
         fs.writeFile(pathToJSON, myJsonString, (err) => {

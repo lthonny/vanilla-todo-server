@@ -19,7 +19,7 @@ class FactoryTaskList {
         }
 
         if (type === 'mongodb') {
-            mongoose.connect('mongodb://localhost:2717', {
+            mongoose.connect(proccess.env.DB_CONNECT_URL, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             }, () => console.log('Database connected Mongodb...'));

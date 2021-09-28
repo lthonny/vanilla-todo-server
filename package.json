@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.js cross-env NODE_ENV=development --mode development",
     "lint": "eslint --debug src/",
     "lint:write": "eslint --debug src/ --fix",
     "prettier": "npx prettier --write .",
-    "test": "playwright test"
+    "setup_db_testing": "docker container run --rm -d --name=testing -p 5444:5432 -e POSTGRES_PASSWORD=test postgres || echo 'already running'",
+    "create_db_testing": "NODE_ENV=test npx sequelize-cli db:create && NODE_ENV=test npx sequelize-cli db:migrate",
+    "production": "",
+    "development": "",
+    "test1": "node index.js cross-env NODE_ENV=test nodemon --mode test",
+    "test": "npm run create_db_testing && NODE_ENV=test node index.js"
   },
   "author": "Vasilich",
   "license": "ISC",
@@ -17,6 +22,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",
     "mongodb": "^4.0.1",
     "mongoose": "^5.13.3",
@@ -32,10 +38,10 @@
     ]
   },
   "devDependencies": {
-    "@playwright/test": "^1.15.0",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "puppeteer": "^10.4.0"
   },
   "engines": {
     "node": ">=16.8.0 <16.9.0",
