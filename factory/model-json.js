@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const pathToJSON = path.join(__dirname + './../tasks.json');
+const pathToJSON = path.join(__dirname + '../tasks.json');
 
 const { generateId } = require('../utils');
 

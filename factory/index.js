@@ -26,6 +26,7 @@ class FactoryTaskList {
 
             this.tasklist = new ModelMongo();
         } else if (type === 'postgresqldb') {
+            console.log('postres');
             sequelize.authenticate()
                 .then(() => console.log('Connection has been established successfully.'))
                 .catch((err) => console.log(err));

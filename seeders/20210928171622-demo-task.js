@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           id: 1,
-          text: '1',
+          text: 'seed 1',
           status: false,
           order: 1,
           createdAt: new Date(),
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           id: 2,
-          text: '2',
+          text: 'seed 2',
           status: false,
           order: 2,
           createdAt: new Date(),
@@ -23,15 +23,15 @@ module.exports = {
         },
         {
           id: 3,
-          text: '3',
-          status: false,
+          text: 'seed 3',
+          status: true,
           order: 3,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           id: 4,
-          text: '4',
+          text: 'seed 4',
           status: false,
           order: 4,
           createdAt: new Date(),
@@ -39,8 +39,8 @@ module.exports = {
         },
         {
           id: 5,
-          text: '5',
-          status: false,
+          text: 'seed 5',
+          status: true,
           order: 5,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -70,6 +70,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-     await queryInterface.bulkDelete('task', null, bulkDeleteOptions);
+     await queryInterface.bulkDelete('Tasks', null, {});
   }
 };
