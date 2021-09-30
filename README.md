@@ -46,9 +46,7 @@ In order to run e2e tests that are written on the frontend, you need to run:
  
    **[PATH TO]** - the path where you created the folder to store the container
 
-   - `npx sequelize-cli db:create` create a database inside container
-
-   - `npx sequelize-cli db:migrate` create tables inside container
+   - `npm run create_db` create a database inside container and tables
 
 ---
 
