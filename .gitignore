@@ -1,4 +1,6 @@
-.env/
+.env
+.env.development
+.env.test
 .idea/
 node_modules/
 pgdata/
