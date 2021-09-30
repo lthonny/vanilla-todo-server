@@ -24,7 +24,7 @@ module.exports = {
         {
           id: 3,
           text: 'seed 3',
-          status: true,
+          status: false,
           order: 3,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -40,7 +40,7 @@ module.exports = {
         {
           id: 5,
           text: 'seed 5',
-          status: true,
+          status: false,
           order: 5,
           createdAt: new Date(),
           updatedAt: new Date()

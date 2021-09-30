@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development node index.js --mode development",
-    "dev": "nodemon index.js NODE_ENV=development --mode development",
+    "dev": "NODE_ENV=development nodemon index.js --mode development",
     "lint": "eslint --debug src/",
     "lint:write": "eslint --debug src/ --fix",
     "prettier": "npx prettier --write .",
@@ -45,5 +45,6 @@
   "engines": {
     "node": ">=16.8.0 <16.9.0",
     "npm": ">=7.21.0 <7.22.0"
-  }
+  },
+  "engineStrict": true
 }
