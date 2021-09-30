@@ -10,6 +10,7 @@ If you have something missing below there are links to settings
 ### ENV file:
 
 Rename 
+    
     .env.example to .env, 
     
     .env.test.example to .env.test, 
