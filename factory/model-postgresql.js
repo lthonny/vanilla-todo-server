@@ -1,6 +1,4 @@
 const {Task} = require("../models");
-//const Task = models.Task;
-
 
 class ModelPostgresql {
 
