@@ -1,51 +1,90 @@
 const Task = require('../models/modelMongodb');
 
 class ModelMongo {
+                                          async getTasks() {
+                                                                                    return Task.find();
+                                          }
 
-  async getTasks() {
-    return Task.find();
-  }
+                                          async addTask(text) {
+                                                                                    const tasks =
+                                                                                                                              await Task.find();
 
+                                                                                    let order = 1;
+                                                                                    if (
+                                                                                                                              tasks.length
+                                                                                    ) {
+                                                                                                                              order =
+                                                                                                                                                                        tasks.reduce(
+                                                                                                                                                                                                                  (
+                                                                                                                                                                                                                                                            acc,
+                                                                                                                                                                                                                                                            curr,
+                                                                                                                                                                                                                  ) => {
+                                                                                                                                                                                                                                                            return acc >
+                                                                                                                                                                                                                                                                                                      curr.order
+                                                                                                                                                                                                                                                                                                      ? acc
+                                                                                                                                                                                                                                                                                                      : curr.order;
+                                                                                                                                                                                                                  },
+                                                                                                                                                                                                                  1,
+                                                                                                                                                                        ) +
+                                                                                                                                                                        1;
+                                                                                    }
 
-  async addTask(text) {
-    const tasks = await Task.find();
+                                                                                    const date =
+                                                                                                                              new Date();
+                                                                                    date.toLocaleString();
 
-    let order = 1;
-    if (tasks.length) {
-      order = tasks.reduce((acc, curr) => {
-        return acc > curr.order ? acc : curr.order;
-      }, 1) + 1;
-    }
+                                                                                    const task =
+                                                                                                                              new Task(
+                                                                                                                                                                        {
+                                                                                                                                                                                                                  text,
+                                                                                                                                                                                                                  status: false,
+                                                                                                                                                                                                                  date,
+                                                                                                                                                                                                                  order,
+                                                                                                                                                                        },
+                                                                                                                              );
 
+                                                                                    await task.save();
+                                                                                    return;
+                                          }
 
-    const date = new Date();
-    date.toLocaleString();
+                                          async editTask(id, dataset) {
+                                                                                    const updateObj =
+                                                                                                                              {};
 
-    const task = new Task({ text, status: false, date, order });
+                                                                                    Object.entries(
+                                                                                                                              dataset,
+                                                                                    ).forEach(
+                                                                                                                              ([
+                                                                                                                                                                        key,
+                                                                                                                                                                        value,
+                                                                                                                              ]) => {
+                                                                                                                                                                        if (
+                                                                                                                                                                                                                  value !==
+                                                                                                                                                                                                                                                            undefined &&
+                                                                                                                                                                                                                  value !==
+                                                                                                                                                                                                                                                            null
+                                                                                                                                                                        ) {
+                                                                                                                                                                                                                  updateObj[
+                                                                                                                                                                                                                                                            key
+                                                                                                                                                                                                                  ] =
+                                                                                                                                                                                                                                                            value;
+                                                                                                                                                                        }
+                                                                                                                              },
+                                                                                    );
 
-    await task.save();
-    return;
-  }
+                                                                                    await Task.findByIdAndUpdate(
+                                                                                                                              id,
+                                                                                                                              updateObj,
+                                                                                    );
+                                                                                    return;
+                                          }
 
-
-  async editTask(id, dataset) {
-    const updateObj = {};
-
-    Object.entries(dataset).forEach(([key, value]) => {
-      if (value !== undefined && value !== null) {
-          updateObj[key] = value;
-      }
-    })
-
-    await Task.findByIdAndUpdate(id, updateObj);
-    return;
-  }
-
-
-  async deleteTask(id) {
-    await Task.findByIdAndDelete(id);
-    return;
-  }
+                                          async deleteTask(id) {
+                                                                                    await Task.findByIdAndDelete(
+                                                                                                                              id,
+                                                                                    );
+                                                                                    return;
+                                          }
 }
 
 module.exports = ModelMongo;

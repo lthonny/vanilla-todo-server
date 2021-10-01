@@ -4,17 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node index.js --mode development",
-    "dev": "NODE_ENV=development nodemon index.js --mode development",
-    "lint": "eslint --debug src/",
-    "lint:write": "eslint --debug src/ --fix",
-    "prettier": "npx prettier --write .",
+    "start": "NODE_ENV=production node index.js --mode production",
+    "start:dev": "NODE_ENV=development nodemon index.js --mode development",
+    "start:test": "NODE_ENV=test node index.js nodemon --mode test",
+    "lint": "eslint --debug ./**",
+    "lint:write": "eslint --debug --fix ./**",
     "create_db": "NODE_ENV=development npx sequelize-cli db:create && NODE_ENV=development npx sequelize-cli db:migrate",
     "setup_db_testing": "docker container run --rm -d --name=testing -p 5444:5432 -e POSTGRES_PASSWORD=test postgres || echo 'already running'",
     "create_db_testing": "NODE_ENV=test npx sequelize-cli db:create && NODE_ENV=test npx sequelize-cli db:migrate && NODE_ENV=test npx sequelize-cli db:seed:all",
     "make_seed": "npx sequelize-cli seed:generate --name demo-task",
-    "seed": "npx sequelize-cli db:seed:all",
-    "test": "NODE_ENV=test node index.js nodemon --mode test"
+    "seed": "npx sequelize-cli db:seed:all"
   },
   "author": "Vasilich",
   "license": "ISC",
@@ -40,11 +39,15 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.4.1"
   },
   "engines": {
-    "node": ">=14.16.6 < 14.16.7",
-    "npm": ">=7.21.0 <7.22.0"
+    "node": ">=14.16.6 < 14.18.0",
+    "npm": ">=7.24.1 <7.25.0"
   },
   "engineStrict": true
 }

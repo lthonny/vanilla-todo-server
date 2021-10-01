@@ -13,7 +13,7 @@ app.use(todoRoutes);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const PORT = process.env.SERVER_PORT ?? 3000;
+const PORT = process.env.SERVER_PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is up ${PORT}`);
